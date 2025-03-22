@@ -11,24 +11,8 @@ import { Avatar } from '../Avatar'
 import styles from './Post.module.css'
 import { Comment } from './SubComponents/Comment'
 
-interface Author {
-  name: string
-  role: string
-  avatarUrl: string
-}
 
-interface Content {
-  type: string
-  content: string
-}
-
-interface PostProps {
-  author: Author
-  content: Content[]
-  publishedAt: Date
-}
-
-export function Post({ author, content, publishedAt }: PostProps) {
+export function Post({ author, content, publishedAt }: PostsType) {
   const [comments, setComments] = useState([ 'Post muito bom!!!' ])
   const [newCommentText, setNewCommentText] = useState('')
   const formattedDate = format(publishedAt, "d 'de' LLLL 'às' HH:mm'h'", {
