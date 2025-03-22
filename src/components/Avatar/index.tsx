@@ -1,17 +1,17 @@
+import type { ImgHTMLAttributes } from 'react'
 import styles from './Avatar.module.css'
 
-interface AvatarProps {
+interface AvatarProps extends ImgHTMLAttributes<HTMLImageElement> {
   hasBorder?: boolean
-  src: string
-  alt?: string
 }
 
-export function Avatar({ hasBorder = true, src }: AvatarProps) {
+export function Avatar({ hasBorder = true,  alt = 'avatar-img', ...props }: AvatarProps) {
   return (
+    // biome-ignore lint/a11y/useAltText: <explanation>
     <img 
-      src={src}
-      alt='avatar-img' 
       className={hasBorder ? styles.avatarWithBorder : styles.avatar}
+      alt={alt}
+      {...props}
     />
   )
 }
